@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#11182f" />
+    <meta name="description" content="Sky Climbers — climb together, survive the storm." />
+    <title>SKY CLIMBERS</title>
+  </head>
+  <body>
+    <div id="app">
+      <main id="lobby-screen" class="screen">
+        <div class="lobby-shell">
+          <section class="brand-panel">
+            <p class="eyebrow">ONLINE ASCENT // SEASON 01</p>
+            <h1>SKY<br /><span>CLIMBERS</span></h1>
+            <p class="tagline">Climb past the clouds.<br />Leave a light behind.</p>
+            <div class="pixel-mountain" aria-hidden="true">
+              <span class="peak peak-a"></span>
+              <span class="peak peak-b"></span>
+              <span class="peak peak-c"></span>
+              <span class="sun"></span>
+            </div>
+            <p class="microcopy">A cooperative race to the top.<br />50 climbers. One summit.</p>
+          </section>
+
+          <section class="lobby-card" aria-label="Game lobby">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">WELCOME, CLIMBER</p>
+                <h2>Choose your route</h2>
+              </div>
+              <div class="status-dot"><span></span> LIVE</div>
+            </div>
+
+            <form id="join-form" class="join-form">
+              <label for="player-name">CALLSIGN</label>
+              <div class="name-row">
+                <input id="player-name" name="playerName" maxlength="16" minlength="2" autocomplete="nickname" placeholder="e.g. cloudfox" required />
+                <button id="refresh-servers" class="icon-button" type="button" aria-label="Refresh routes" title="Refresh routes">↻</button>
+              </div>
+
+              <div class="route-heading">
+                <label>OPEN ROUTES</label>
+                <span id="connection-status" class="connection-status">CONNECTING…</span>
+              </div>
+              <div id="server-list" class="server-list" aria-live="polite">
+                <div class="empty-state">Scanning the cloudline…</div>
+              </div>
+
+              <button id="launch-button" class="primary-button" type="submit" disabled>
+                <span>LAUNCH ASCENT</span><b>→</b>
+              </button>
+              <p id="lobby-message" class="form-message" role="status"></p>
+            </form>
+            <div class="lobby-footer"><span>WASD / ARROWS</span><span>SPACE TO JUMP</span><span>ESC TO LEAVE</span></div>
+          </section>
+        </div>
+      </main>
+
+      <main id="game-screen" class="screen hidden">
+        <div class="game-frame">
+          <canvas id="game-canvas" width="960" height="540" aria-label="Sky Climbers game world"></canvas>
+          <div class="hud hud-top">
+            <div class="hud-brand"><span class="brand-mark">✦</span><span>SKY CLIMBERS</span></div>
+            <div class="hud-route"><span id="hud-route-name">—</span><i></i><span id="hud-player-count">0/50</span></div>
+          </div>
+          <div class="hud hud-bottom">
+            <div class="stat-chip"><span class="stat-label">CHECKPOINT</span><strong id="hud-checkpoint">BASE CAMP</strong></div>
+            <div class="stat-chip"><span class="stat-label">CLIMBER</span><strong id="hud-player-name">—</strong></div>
+            <button id="leaderboard-button" class="hud-button" type="button">LEADERBOARD <span>Tab</span></button>
+          </div>
+          <div id="leaderboard" class="leaderboard-panel hidden" aria-live="polite">
+            <div class="leaderboard-head"><span>SUMMIT BOARD</span><span id="leaderboard-count">0 CLIMBERS</span></div>
+            <div id="leaderboard-rows"></div>
+          </div>
+          <div id="event-banner" class="event-banner hidden"></div>
+          <div id="touch-controls" class="touch-controls" aria-hidden="true">
+            <button data-control="left" type="button">←</button>
+            <button data-control="right" type="button">→</button>
+            <button data-control="jump" type="button">JUMP</button>
+          </div>
+          <div id="connection-pill" class="connection-pill"><span></span> CONNECTED</div>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/client/main.js"></script>
+  </body>
+</html>
+
